@@ -52,22 +52,37 @@ class DoublyLinkedList:
     """
 
     def remove_from_head(self):
+        if self.head is None:
+            return None
+
+        if self.head:
+            cur = self.head.next
+            cur.prev = None
+            self.head = cur
+
+    """
+    Wraps the given value in a ListNode and inserts it
+    as the new tail of the list. Don't forget to handle
+    the old tail node's next pointer accordingly.
+    """
+
+    def add_to_tail(self, value):
         pass
+
+        
+    def print_l(self):
+        cur = self.head
+        while cur:
+            print(cur.value)
+            cur = cur.next
+
 
 dll = DoublyLinkedList()
 dll.add_to_head("A")
 dll.add_to_head("c")
 dll.add_to_head("b")
-
+dll.remove_from_head()
 dll.print_l()
-# """
-# Wraps the given value in a ListNode and inserts it
-# as the new tail of the list. Don't forget to handle
-# the old tail node's next pointer accordingly.
-# """
-
-# def add_to_tail(self, value):
-#     pass
 
 # """
 # Removes the List's current tail node, making the
