@@ -67,9 +67,20 @@ class DoublyLinkedList:
     """
 
     def add_to_tail(self, value):
-        pass
+        if self.head is None:
+            new_node = ListNode(value)
+            self.head = new_node
+            new_node.prev = None
+        else:
+            new_node = ListNode(value)
 
-        
+            cur = self.head
+            while cur.next:
+                cur = cur.next
+            cur.next = new_node
+            new_node.prev = cur
+            new_node.next = None
+
     def print_l(self):
         cur = self.head
         while cur:
@@ -78,10 +89,10 @@ class DoublyLinkedList:
 
 
 dll = DoublyLinkedList()
+dll.add_to_tail("0")
 dll.add_to_head("A")
 dll.add_to_head("c")
 dll.add_to_head("b")
-dll.remove_from_head()
 dll.print_l()
 
 # """
