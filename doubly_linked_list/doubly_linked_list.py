@@ -81,6 +81,27 @@ class DoublyLinkedList:
             new_node.prev = cur
             new_node.next = None
 
+    """
+    Removes the List's current tail node, making the
+    current tail's previous node the new tail of the List.
+    Returns the value of the removed Node.
+    """
+
+    def remove_from_tail(self):
+        cur = self.head
+        if not cur.next:
+            cur = None
+            self.head = None
+            return
+        else:
+            while cur.next:
+                cur = cur.next
+            
+            prev = cur.prev
+            prev.next = None
+            cur = None
+            return
+
     def print_l(self):
         cur = self.head
         while cur:
@@ -89,20 +110,15 @@ class DoublyLinkedList:
 
 
 dll = DoublyLinkedList()
-dll.add_to_tail("0")
-dll.add_to_head("A")
-dll.add_to_head("c")
-dll.add_to_head("b")
+dll.add_to_tail("A")
+dll.add_to_tail("B")
+dll.add_to_tail("C")
+dll.add_to_tail("D")
+print("before")
 dll.print_l()
-
-# """
-# Removes the List's current tail node, making the
-# current tail's previous node the new tail of the List.
-# Returns the value of the removed Node.
-# """
-
-# def remove_from_tail(self):
-#     pass
+print("after")
+dll.remove_from_tail()
+dll.print_l()
 
 # """
 # Removes the input node from its current spot in the
